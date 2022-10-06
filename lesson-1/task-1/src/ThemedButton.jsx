@@ -5,6 +5,7 @@ class ThemedButton extends React.Component {
   render() {
     return (
       <button
+        onClick={this.props.toogleTheme}
         style={{
           background: this.context.background,
           color: this.context.fontColor,
