@@ -1,30 +1,30 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ThemedButton from './ThemedButton';
 import './index.scss';
-import Home from './Home';
-import Products from './Products';
-import Contacts from './Contacts';
-import PageNotFound from './PageNotFound';
+import { themes, ThemeContext } from './themes-context';
 
-const App = () => (
-  <div className="page">
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/products">
-          <Products />
-        </Route>
-        <Route path="/contacts">
-          <Contacts />
-        </Route>
-        <Route path="*">
-          <PageNotFound />
-        </Route>
-      </Switch>
-    </BrowserRouter>
-  </div>
-);
+class App extends React.Component {
+  state = {
+    theme: themes.light,
+  };
+
+  toogleTheme = () => {
+    const newTheme = this.state.theme === themes.light ? themes.dark : themes.light;
+    this.setState({
+      theme: newTheme,
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <ThemeContext.Provider value={this.state.theme}>
+          <ThemedButton onClick={this.toogleTheme}>Dinamic Theme</ThemedButton>
+        </ThemeContext.Provider>
+        <ThemedButton onClick={this.toogleTheme}>Default Theme</ThemedButton>
+      </div>
+    );
+  }
+}
 
 export default App;

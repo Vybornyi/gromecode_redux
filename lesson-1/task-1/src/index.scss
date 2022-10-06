@@ -4,17 +4,22 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
 }
 
-.page {
-  width: 100vw;
+#root {
   height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-  }
+.btn {
+  height: 32px;
+  border: 3px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 16px;
+  font-size: 18px;
 }
