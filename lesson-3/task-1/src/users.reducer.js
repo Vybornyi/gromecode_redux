@@ -9,17 +9,17 @@ const usersReduser = (state = initialState, action) => {
     case ADD_USER:
       return {
         ...state,
-        users: state.usersList.concat(action.payload.userData),
+        usersList: state.usersList.concat(action.payload.userData),
       };
     case DELETE_USER:
       return {
         ...state,
-        users: state.usersList.filter(user => user.id !== action.payload.userId),
+        usersList: state.usersList.filter(user => user.id !== action.payload.userId),
       };
     case UPDATE_USER:
       return {
         ...state,
-        users: state.usersList.map(user => {
+        usersList: state.usersList.map(user => {
           if (user.id === action.payload.userId) {
             return {
               ...user,
