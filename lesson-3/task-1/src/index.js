@@ -25,3 +25,4 @@ store.dispatch(
     name: 'Ivanna',
   }),
 );
+store.dispatch(increment());
