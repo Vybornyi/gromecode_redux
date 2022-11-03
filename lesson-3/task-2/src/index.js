@@ -1,25 +1,8 @@
-import { createStore } from 'redux';
+import { increment, decrement, store } from './counter';
 
-const INCREMENT = 'COUNTER/INCREMENT';
-const DECREMENT = 'COUNTER/DECREMENT';
+store.subscribe(() => console.log(store.getState()));
 
-export const increment = () => ({
-  type: INCREMENT,
-});
 
-export const decrement = () => ({
-  type: DECREMENT,
-});
-
-const counterReduser = (state = 0, action) => {
-  switch (action.type) {
-    case INCREMENT:
-      return state + 1;
-    case DECREMENT:
-      return state - 1;
-    default:
-      return state;
-  }
-};
-
-export const store = createStore(counterReduser);
+store.dispatch(increment());
+store.dispatch(decrement());
+store.dispatch(decrement());
