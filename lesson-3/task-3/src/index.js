@@ -1,25 +1,13 @@
-import { createStore } from 'redux';
+import store from './store';
+import { setLanguage } from './language.actions';
+import { addProduct, removeProduct } from './cart.actions';
+import { setUser } from './user.actions';
 
-const INCREMENT = 'COUNTER/INCREMENT';
-const DECREMENT = 'COUNTER/DECREMENT';
+store.subscribe(() => console.log(store.getState()));
 
-export const increment = () => ({
-  type: INCREMENT,
-});
-
-export const decrement = () => ({
-  type: DECREMENT,
-});
-
-const counterReduser = (state = 0, action) => {
-  switch (action.type) {
-    case INCREMENT:
-      return state + 1;
-    case DECREMENT:
-      return state - 1;
-    default:
-      return state;
-  }
-};
-
-export const store = createStore(counterReduser);
+store.dispatch(setLanguage('ua'));
+store.dispatch(addProduct({ id: 76, name: 'milk' }));
+store.dispatch(addProduct({ id: 8, name: 'apple' }));
+store.dispatch(removeProduct(8));
+store.dispatch(setUser({ name: 'Bob' }));
+store.dispatch(setUser({ name: 'Bobby' }));
