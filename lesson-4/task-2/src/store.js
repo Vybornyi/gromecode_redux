@@ -1,10 +1,9 @@
-import { createStore, combineReducers } from 'redux';
-import countReducer from './counter.reducer';
-import usersReduser from './users.reducer';
+/* eslint-disable prettier/prettier */
+import { createStore } from 'redux';
 
-const appReduser = combineReducers({
-  counter: countReducer,
-  users: usersReduser,
-});
-const store = createStore(appReduser);
+import usersReduser from './users/users.reducer';
+
+
+const store = createStore(usersReduser)
+
 export default store;
