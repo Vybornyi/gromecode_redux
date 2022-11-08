@@ -14,9 +14,9 @@ const UsersList = ({ users, toogglePrevPage, tooggleNextPage }) => {
   return (
     <div>
       <Pagination
-        toogglePrevPage={toogglePrevPage}
-        tooggleNextPage={tooggleNextPage}
-        pageNumber={pageNumber}
+        goPrev={toogglePrevPage}
+        goNext={tooggleNextPage}
+        currentPage={pageNumber}
         totalItems={totalItems}
       />
       <ul className="users">
