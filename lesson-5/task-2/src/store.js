@@ -1,8 +1,9 @@
 import { createStore, combineReducers } from 'redux';
-import userReducer from './users/user.reducer';
+import optionsReducer from './options/options.reducer';
 
-const appReducer = combineReducers({
-  users: userReducer,
+const appStore = combineReducers({
+  options: optionsReducer,
 });
-const store = createStore(appReducer);
+
+const store = createStore(appStore);
 export default store;
