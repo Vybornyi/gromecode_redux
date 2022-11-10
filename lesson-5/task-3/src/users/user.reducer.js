@@ -1,4 +1,4 @@
-import { NEXT_PAGE, PREVIOUS_PAGE } from './user.actions';
+import { INPUT_CHANGE } from './user.actions';
 
 const users = [
   {
@@ -58,23 +58,20 @@ const users = [
   },
 ];
 const initialState = {
+  filterText: '',
   usersList: users,
-  currentPage: 0,
 };
+
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case NEXT_PAGE:
+    case INPUT_CHANGE:
       return {
         ...state,
-        currentPage: state.currentPage + 1,
-      };
-    case PREVIOUS_PAGE:
-      return {
-        ...state,
-        currentPage: state.currentPage - 1,
+        filterText: action.payload.value,
       };
     default:
       return state;
   }
 };
+
 export default userReducer;

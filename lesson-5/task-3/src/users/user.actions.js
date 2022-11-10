@@ -1,9 +1,8 @@
-export const NEXT_PAGE = 'USER/NEXT_PAGE';
-export const PREVIOUS_PAGE = 'USER/PREVIOUS_PAGE';
+export const INPUT_CHANGE = 'USER/INPUT_CHANGE';
 
-export const toogleNextPage = () => ({
-  type: NEXT_PAGE,
-});
-export const tooglePreviousPage = () => ({
-  type: PREVIOUS_PAGE,
+export const inputChange = value => ({
+  type: INPUT_CHANGE,
+  payload: {
+    value,
+  },
 });

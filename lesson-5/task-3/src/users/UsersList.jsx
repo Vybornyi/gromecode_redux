@@ -1,40 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Pagination from './Pagination';
+import Filter from '../Filter';
 import User from './User';
-import * as userActions from './user.actions';
+import { inputChange } from './user.actions';
+import { filterTextSelector, usersListFilterSelector } from './userSelector';
 
-const UsersList = ({ users, toogglePrevPage, tooggleNextPage }) => {
-  const { usersList, currentPage } = users;
-  const itemsPerPage = 3;
-  const pageNumber = currentPage + 1;
-  const indexTo = pageNumber * itemsPerPage;
-  const totalItems = usersList.length;
-  const newUserList = usersList.slice(indexTo - itemsPerPage, indexTo);
+const UsersList = ({ usersList, filterText, onInputChange }) => {
+  const count = usersList.length;
+  const onChange = e => {
+    onInputChange(e.target.value);
+  };
   return (
     <div>
-      <Pagination
-        goPrev={toogglePrevPage}
-        goNext={tooggleNextPage}
-        currentPage={pageNumber}
-        totalItems={totalItems}
-      />
+      <Filter filterText={filterText} count={count} onChange={onChange} />
       <ul className="users">
-        {newUserList.map(user => (
+        {usersList.map(user => (
           <User key={user.id} name={user.name} age={user.age} />
         ))}
       </ul>
     </div>
   );
 };
-const mapState = state => ({
-  users: state.users,
+
+const mapStore = state => ({
+  usersList: usersListFilterSelector(state),
+  filterText: filterTextSelector(state),
 });
 const mapDispatch = {
-  toogglePrevPage: userActions.tooglePreviousPage,
-  tooggleNextPage: userActions.toogleNextPage,
+  onInputChange: inputChange,
 };
-
-const connector = connect(mapState, mapDispatch);
-
-export default connector(UsersList);
+export default connect(mapStore, mapDispatch)(UsersList);

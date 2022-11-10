@@ -8,5 +8,4 @@ const App = () => (
     <UsersList />
   </Provider>
 );
-
 export default App;
