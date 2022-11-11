@@ -7,7 +7,6 @@ const logger = store => next => action => {
   const result = next(action);
   console.log('next state', store.getState());
   console.groupEnd();
-  return result;
 };
 const appStore = combineReducers({
   counter: counterReducer,
