@@ -2,7 +2,6 @@ import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import userReducer from './users/user.reducer';
 
-
 const logger = store => next => action => {
   console.group(action.type);
   console.info('dispatching', action.type);
