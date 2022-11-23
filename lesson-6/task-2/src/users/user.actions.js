@@ -1,8 +1,19 @@
-export const INPUT_CHANGE = 'USER/INPUT_CHANGE';
+import getUserData from './user.gateway';
 
-export const inputChange = value => ({
-  type: INPUT_CHANGE,
+export const SHOW_SPINNER = 'USER/SHOW_SPINNER';
+export const USER_DATA_RECIVED = 'USER/USER_DATA_RECIVED';
+
+export const showSpinner = () => ({
+  type: SHOW_SPINNER,
+});
+export const userDataRecived = userData => ({
+  type: USER_DATA_RECIVED,
   payload: {
-    value,
+    userData,
   },
 });
+export const fetchUserData = inputValue =>
+  function (dispatch) {
+    dispatch(showSpinner());
+    getUserData(inputValue).then(data => dispatch(userDataRecived(data)));
+  };
