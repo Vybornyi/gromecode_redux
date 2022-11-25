@@ -1,6 +1,6 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import weatherReduser from './weather/weather.reducer';
+import tasksReducer from './tasks/tasks.reducer';
 
 const logger = store => next => action => {
   console.group(action.type);
@@ -13,6 +13,6 @@ const logger = store => next => action => {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const store = createStore(weatherReduser, composeEnhancers(applyMiddleware(thunk, logger)));
+export const store = createStore(tasksReducer, composeEnhancers(applyMiddleware(thunk, logger)));
 
 export default store;
